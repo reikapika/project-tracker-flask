@@ -7,6 +7,13 @@
 <h1>{{ first }} {{ last }}</h1>
 
 <p>GitHub Account: {{ github }}</p>
+<ul>Project Title: 
+    {% for project_title,grade in grades %}
+    <li>Project title: {{ project_title }}</li>
+    <li>Grade: {{ grade }} </li>
+    {% endfor %}
+</ul>
+
 
 <a href="localhost:5000/new_student">Link</a>
 </body>

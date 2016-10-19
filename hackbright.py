@@ -86,8 +86,11 @@ def get_grade_by_github_title(github, title):
         """
     db_cursor = db.session.execute(QUERY, {'github': github, 'title': title})
     row = db_cursor.fetchone()
+    print row
     print "Student %s in project %s received grade of %s" % (
         github, title, row[0])
+    if 'title' not in title:
+        return "GitHub Account Not Found." 
     return row
 
 
@@ -110,9 +113,10 @@ def get_grades_by_github(github):
         """
     db_cursor = db.session.execute(QUERY, {'github': github})
     rows = db_cursor.fetchall()
-    for row in rows:
-        print "Student %s received grade of %s for project %s" % (
-            github, row[1], row[0])
+    print rows
+    # for row in rows:
+    #     print "Student %s received grade of %s for project %s" % (
+    #         github, row[1], row[0])
     return rows
 
 def get_grades_by_title(title):
